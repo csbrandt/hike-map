@@ -1,9 +1,6 @@
 Hiking trail discovery with Algolia and Mapbox GL.
 
-Installation
--------------
-
-    $ couchapp push dist/couchapp [hostname]/hike-map
+Demo: https://csbrandt.github.io/hike-map/dist/
 
 
 Development

@@ -12,9 +12,9 @@ stringify = require('stringify')
 path = require('path')
 
 config =
-   entryFile: './couchapp/_attachments/script/index.js'
-   inputDir: './couchapp'
-   outputDir: './dist/couchapp'
+   entryFile: './src/script/index.js'
+   inputDir: './src'
+   outputDir: './dist'
    outputFile: 'index.js'
 
 getBundler = (config) ->
@@ -31,18 +31,18 @@ bundle = (config) ->
    ).pipe source(config.outputFile)
    #.pipe buffer()
    #.pipe uglify()
-   .pipe gulp.dest(config.outputDir + '/_attachments/script')
+   .pipe gulp.dest(config.outputDir + '/script')
 
 gulp.task 'clean', (cb) ->
    rimraf './dist/', cb
 
 gulp.task 'css', ['clean'], ->
-   gulp.src(config.inputDir + '/_attachments/less/style.less')
+   gulp.src(config.inputDir + '/less/style.less')
       .pipe(less({
-         paths: [path.join(config.inputDir, '_attachments', 'node_modules')]
+         paths: [path.join(config.inputDir, 'node_modules')]
       }))
       .pipe cssmin()
-      .pipe gulp.dest(config.outputDir + '/_attachments/css')
+      .pipe gulp.dest(config.outputDir + '/css')
 
 gulp.task 'copy', ['clean'], ->
    gulp.src(config.inputDir + '/_id')
@@ -54,8 +54,8 @@ gulp.task 'copy', ['clean'], ->
    gulp.src(config.inputDir + '/language')
       .pipe gulp.dest(config.outputDir)
 
-   gulp.src(config.inputDir + '/_attachments/index.html')
-      .pipe gulp.dest(config.outputDir + '/_attachments')
+   gulp.src(config.inputDir + '/index.html')
+      .pipe gulp.dest(config.outputDir)
 
    gulp.src([config.inputDir + '/views/**/*'])
       .pipe(gulp.dest(config.outputDir + '/views'))

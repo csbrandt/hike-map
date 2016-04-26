@@ -4,7 +4,7 @@
   "description": "Hiking trail discovery with Algolia and Mapbox GL.",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install & npm install --prefix ./couchapp/_attachments"
+    "setup": "npm install & npm install --prefix ./src"
   },
   "author": "csbrandt",
   "license": "MIT",
